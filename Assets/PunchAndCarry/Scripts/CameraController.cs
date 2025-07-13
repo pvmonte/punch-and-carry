@@ -1,18 +1,20 @@
-using System;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+namespace PunchAndCarry.Scripts
 {
-    [SerializeField] private Transform _player;
-    [SerializeField] private Vector3 _offset;
-
-    private void OnValidate()
+    public class CameraController : MonoBehaviour
     {
-        _offset = transform.position;
-    }
+        [SerializeField] private Transform _player;
+        [SerializeField] private Vector3 _offset;
 
-    void Update()
-    {
-        transform.position = _player.position + _offset;
+        private void OnValidate()
+        {
+            _offset = transform.position;
+        }
+
+        void Update()
+        {
+            transform.position = _player.position + _offset;
+        }
     }
 }
