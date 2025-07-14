@@ -20,7 +20,7 @@ AvatarMask:
   - m_Path: Life_Jacket
     m_Weight: 0
   - m_Path: mixamorig:Hips
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: mixamorig:Hips/mixamorig:LeftUpLeg
     m_Weight: 0
   - m_Path: mixamorig:Hips/mixamorig:LeftUpLeg/mixamorig:LeftLeg
