@@ -8,6 +8,7 @@ namespace PunchAndCarry.Scripts.Player
         [SerializeField] private PlayerInput _input;
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private float speed = 5;
+        public Vector3 velocity => _characterController.velocity;
 
         public Vector3 MoveVector { get; private set; }
 
