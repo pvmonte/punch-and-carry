@@ -19,13 +19,17 @@ namespace PunchAndCarry.Scripts.Enemy
             _enemyController.OnPunchedEvent += OnPunched;
         }
 
-        private void OnPunched(Transform puncherPosition)
+        private async void OnPunched(Transform puncherPosition)
         {
             EnableRagdoll();
 
             var puncherVector = puncherPosition.forward * _force;
             puncherVector.y = 10;
             _rigidbodies[0].AddForce(puncherVector, ForceMode.Impulse);
+
+            await WaitForBodyToStop();
+            
+            ReassembleToRoot();
         }
         
         private void EnableRagdoll()
@@ -48,8 +52,21 @@ namespace PunchAndCarry.Scripts.Enemy
 
         private void ReassembleToRoot()
         {
-            transform.position = _hipsTransform.position;
-            _hipsTransform.position = Vector3.zero;
+            var transformPosition = _hipsTransform.position;
+            transformPosition.y = 0;
+            transform.position = transformPosition;
+            _hipsTransform.localPosition = Vector3.zero;
+            _enemyController.EnablePickUpCollider();
+        }
+
+        private async Awaitable WaitForBodyToStop()
+        {
+            await Awaitable.WaitForSecondsAsync(.5f);
+            
+            while (_rigidbodies[0].linearVelocity is { x: > 0.1f, z: > 0.1f })
+            {
+                await Awaitable.NextFrameAsync();
+            }
         }
     }
 }

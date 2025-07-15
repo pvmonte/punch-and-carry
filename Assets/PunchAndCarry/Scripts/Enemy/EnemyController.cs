@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -8,6 +9,7 @@ namespace PunchAndCarry.Scripts.Enemy
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private Collider _collider;
+        [SerializeField] private Transform _pickupCollider;
         
         public event Action<Transform> OnPunchedEvent;
         
@@ -23,6 +25,24 @@ namespace PunchAndCarry.Scripts.Enemy
             _animator.enabled = false;
             _collider.enabled = false;
             OnPunchedEvent?.Invoke(puncherPosition);
+        }
+
+        public void EnablePickUpCollider()
+        {
+            _pickupCollider.gameObject.SetActive(true);
+        }
+
+        public async void Pickup(Transform stack)
+        {
+            float lerp = 0;
+            Vector3 startPosition = transform.localPosition;
+            
+            while (lerp < 1)
+            {
+                lerp += Time.deltaTime;
+                transform.position = Vector3.Lerp(startPosition, stack.position, lerp);
+                await Awaitable.NextFrameAsync();
+            }
         }
     }
 }
