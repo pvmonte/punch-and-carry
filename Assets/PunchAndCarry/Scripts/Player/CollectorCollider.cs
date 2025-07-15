@@ -12,7 +12,7 @@ namespace PunchAndCarry.Scripts.Player
         {
             if (other.TryGetComponent(out PickupCollider pickupCollider))
             {
-                pickupCollider.PickUp(_stackReference.transform);
+                pickupCollider.PickUp(_stackReference);
             }
         }
     }

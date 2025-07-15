@@ -1,4 +1,5 @@
 using System;
+using PunchAndCarry.Scripts.Player;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,6 +13,7 @@ namespace PunchAndCarry.Scripts.Enemy
         [SerializeField] private Transform _pickupCollider;
         
         public event Action<Transform> OnPunchedEvent;
+        public event Action OnStartPickUpEvent;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -32,17 +34,22 @@ namespace PunchAndCarry.Scripts.Enemy
             _pickupCollider.gameObject.SetActive(true);
         }
 
-        public async void Pickup(Transform stack)
+        public async void Pickup(EnemyStack stack)
         {
+            OnStartPickUpEvent?.Invoke();
+            _pickupCollider.gameObject.SetActive(false);
+            
             float lerp = 0;
             Vector3 startPosition = transform.localPosition;
             
             while (lerp < 1)
             {
                 lerp += Time.deltaTime;
-                transform.position = Vector3.Lerp(startPosition, stack.position, lerp);
+                transform.position = Vector3.Lerp(startPosition, stack.CurrentPivot.position, lerp);
                 await Awaitable.NextFrameAsync();
             }
+            
+            stack.AddCharacter(transform);
         }
     }
 }

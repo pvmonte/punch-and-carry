@@ -17,6 +17,8 @@ namespace PunchAndCarry.Scripts.Enemy
             DisableRagdoll();
             
             _enemyController.OnPunchedEvent += OnPunched;
+            _enemyController.OnStartPickUpEvent += DisableRagdoll;
+            _enemyController.OnStartPickUpEvent += ReassembleToRoot;
         }
 
         private async void OnPunched(Transform puncherPosition)
@@ -50,6 +52,11 @@ namespace PunchAndCarry.Scripts.Enemy
             }
         }
 
+        private void DisableAllColliders()
+        {
+            DisableRagdoll();
+        }
+
         private void ReassembleToRoot()
         {
             var transformPosition = _hipsTransform.position;
@@ -63,7 +70,7 @@ namespace PunchAndCarry.Scripts.Enemy
         {
             await Awaitable.WaitForSecondsAsync(.5f);
             
-            while (_rigidbodies[0].linearVelocity is { x: > 0.1f, z: > 0.1f })
+            while (_rigidbodies[0].linearVelocity is { x: > 0.05f, z: > 0.05f })
             {
                 await Awaitable.NextFrameAsync();
             }

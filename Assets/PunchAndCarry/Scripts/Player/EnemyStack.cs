@@ -9,21 +9,20 @@ namespace PunchAndCarry.Scripts.Player
     {
         [SerializeField] private PlayerMovement _movement;
         [SerializeField] private List<Transform> _charactersPivotes;
-        private Vector3 _lastPosition;
-        private Vector3 _currentPosition;
-        [SerializeField] private Vector3 _positionDelta;
 
-        [SerializeField] private float _rotationSpeed = 1;
-        [SerializeField] private float _maxRotation;
-        [SerializeField] private float _pivotRotationDelay = 0.1f;
+        [SerializeField] private float _rotationSpeed = 0.35f;
+        [SerializeField] private float _pivotRotationDelay = 0.125f;
 
-        [SerializeField] private Quaternion targetRotation;
-        
-        
+        private Quaternion _targetRotation;
+
+        private int _currentPivotIndex = 0;
+        public Transform CurrentPivot => _charactersPivotes[_currentPivotIndex];
+
+        private List<Transform> _characters = new ();
 
         private void Update()
         {
-            var rotation = targetRotation.eulerAngles;
+            var rotation = _targetRotation.eulerAngles;
 
             if (_movement.velocity.magnitude != 0)
             {
@@ -37,11 +36,10 @@ namespace PunchAndCarry.Scripts.Player
             rotation.y = 0;
             rotation.z = 0;
             rotation.x = Mathf.Clamp(rotation.x, 345, 359);
-
-            targetRotation = Quaternion.Euler(rotation);
-
+            _targetRotation = Quaternion.Euler(rotation);
             RotatePivotsDelayed(rotation);
             
+            PositionAndRotationCharacter();
         }
 
         private async void RotatePivotsDelayed(Vector3 rotation)
@@ -52,7 +50,23 @@ namespace PunchAndCarry.Scripts.Player
                 await Awaitable.WaitForSecondsAsync(_pivotRotationDelay);
             }
         }
-        
-        
+
+        public void AddCharacter(Transform character)
+        {
+            if (_characters.Contains(character)) return;
+            
+            _characters.Add(character);
+            _currentPivotIndex++;
+        }
+
+        public void PositionAndRotationCharacter()
+        {
+            for (int i = 0; i < _characters.Count; i++)
+            {
+                _characters[i].SetPositionAndRotation(
+                    _charactersPivotes[i].position,
+                    _charactersPivotes[i].rotation);
+            }
+        }
     }
 }
