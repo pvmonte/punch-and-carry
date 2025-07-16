@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace PunchAndCarry.Scripts.MoneySystem
 {
-    public class SellPoint : MonoBehaviour , IStackCollidable
+    public class SellPoint : MonoBehaviour , IInteractionCollidable
     {
         [SerializeField] private LevelBag _bag;
 
-        public void Collide(EnemyStack stack)
+        public void Collide(PlayerController player)
         {
-            ThrowAtPoint(stack);
+            ThrowAtPoint(player.EnemyStack);
         }
 
         private async void ThrowAtPoint(EnemyStack stack)

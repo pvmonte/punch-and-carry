@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PunchAndCarry.Scripts.Enemy
 {
-    public class PickupCollider : MonoBehaviour , IStackCollidable
+    public class PickupCollider : MonoBehaviour , IInteractionCollidable
     {
         [SerializeField] private EnemyController _controller;
         [SerializeField] private Transform _hips;
@@ -14,14 +14,11 @@ namespace PunchAndCarry.Scripts.Enemy
             transform.position = _hips.position;
         }
 
-        public void Collide(EnemyStack stack)
+        public void Collide(PlayerController player)
         {
-            _controller.Pickup(stack);
+            if (player.EnemyStack.IsFull) return;
+            
+            _controller.Pickup(player.EnemyStack);
         }
     }
-}
-
-public interface IStackCollidable
-{
-    public void Collide(EnemyStack stack);
 }

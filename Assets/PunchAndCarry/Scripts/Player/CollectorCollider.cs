@@ -6,13 +6,13 @@ namespace PunchAndCarry.Scripts.Player
 {
     public class CollectorCollider : MonoBehaviour
     {
-        [SerializeField] private EnemyStack _stackReference;
+        [SerializeField] private PlayerController _controller;
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out IStackCollidable collidable))
+            if (other.TryGetComponent(out IInteractionCollidable collidable))
             {
-                collidable.Collide(_stackReference);
+                collidable.Collide(_controller);
             }
         }
     }

@@ -16,13 +16,14 @@ namespace PunchAndCarry.Scripts.MoneySystem
             OnChangeMoneyAmountEvent?.Invoke(_money);
         }
 
-        public void Spend(int value)
+        public bool TrySpend(int value)
         {
-            if (value < _money) return;  
+            if (value > _money) return false;  
             
             Inventory.Money -= value;
             _money = Inventory.Money;
             OnChangeMoneyAmountEvent?.Invoke(_money);
+            return true;
         }
     }
 }
