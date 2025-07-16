@@ -19,6 +19,7 @@ namespace PunchAndCarry.Scripts.Player
         public Transform CurrentPivot => _charactersPivotes[_currentPivotIndex];
 
         private List<Transform> _characters = new ();
+        public int StackCount => _characters.Count;
 
         private void Update()
         {
@@ -51,12 +52,19 @@ namespace PunchAndCarry.Scripts.Player
             }
         }
 
-        public void AddCharacter(Transform character)
+        public void PushCharacter(Transform character)
         {
             if (_characters.Contains(character)) return;
             
             _characters.Add(character);
             _currentPivotIndex++;
+        }
+
+        public Transform PopCharacter()
+        {
+            var last = _characters[^1];
+            _characters.Remove(last);
+            return last;
         }
 
         public void PositionAndRotationCharacter()

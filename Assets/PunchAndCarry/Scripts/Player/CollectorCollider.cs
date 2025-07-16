@@ -10,9 +10,9 @@ namespace PunchAndCarry.Scripts.Player
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out PickupCollider pickupCollider))
+            if (other.TryGetComponent(out IStackCollidable collidable))
             {
-                pickupCollider.PickUp(_stackReference);
+                collidable.Collide(_stackReference);
             }
         }
     }

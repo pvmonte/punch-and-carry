@@ -49,7 +49,7 @@ namespace PunchAndCarry.Scripts.Enemy
                 await Awaitable.NextFrameAsync();
             }
             
-            stack.AddCharacter(transform);
+            stack.PushCharacter(transform);
         }
     }
 }
