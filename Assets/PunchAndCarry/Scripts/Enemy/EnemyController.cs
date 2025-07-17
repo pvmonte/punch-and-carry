@@ -37,6 +37,7 @@ namespace PunchAndCarry.Scripts.Enemy
         public void Pickup()
         {
             OnStartPickUpEvent?.Invoke();
+            _animator.enabled = true;
             _pickupCollider.gameObject.SetActive(false);
         }
     }

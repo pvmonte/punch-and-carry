@@ -10,7 +10,7 @@ namespace PunchAndCarry.Scripts.Player
     {
         [SerializeField] private PlayerMovement _movement;
         [SerializeField] private List<Transform> _charactersPivots;
-        [SerializeField] private Vector3 _pivotsOffset = new Vector3(0, 1, 0);
+        [SerializeField] private Vector3 _pivotsOffset = new Vector3(0, 2.5f, 0);
         
         [Header("Pick Up")]
         [SerializeField] private AnimationCurve _pickUpHeightCurve;
@@ -92,6 +92,7 @@ namespace PunchAndCarry.Scripts.Player
         {
             var pivot = _charactersPivots[^1];
             var newPivot = Instantiate(pivot , pivot);
+            newPivot.localPosition = _pivotsOffset;
             _charactersPivots.Add(newPivot);
         }
         

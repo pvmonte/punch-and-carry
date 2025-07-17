@@ -1204,7 +1204,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.1, z: 0}
+  m_Center: {x: 0, y: 1.25, z: 0}
 --- !u!114 &653031818020943243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1760,7 +1760,7 @@ MonoBehaviour:
   _movement: {fileID: 1574897283740969587}
   _charactersPivots:
   - {fileID: 5795125384483688304}
-  _pivotsOffset: {x: 0, y: 1, z: 0}
+  _pivotsOffset: {x: 0, y: 2.5, z: 0}
   _pickUpHeightCurve:
     serializedVersion: 2
     m_Curve:

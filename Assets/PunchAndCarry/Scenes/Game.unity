@@ -2675,6 +2675,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -52.27624
       objectReference: {fileID: 0}
+    - target: {fileID: 4231152559419135751, guid: 2de1020a2000142b583667da443f4f80, type: 3}
+      propertyPath: _pickUpHeightCurve.m_Curve.Array.data[1].value
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231152559419135751, guid: 2de1020a2000142b583667da443f4f80, type: 3}
+      propertyPath: _pickUpHeightCurve.m_Curve.Array.data[0].inSlope
+      value: 6.3002267
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231152559419135751, guid: 2de1020a2000142b583667da443f4f80, type: 3}
+      propertyPath: _pickUpHeightCurve.m_Curve.Array.data[1].inSlope
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231152559419135751, guid: 2de1020a2000142b583667da443f4f80, type: 3}
+      propertyPath: _pickUpHeightCurve.m_Curve.Array.data[2].inSlope
+      value: -1.2730674
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231152559419135751, guid: 2de1020a2000142b583667da443f4f80, type: 3}
+      propertyPath: _pickUpHeightCurve.m_Curve.Array.data[0].outSlope
+      value: 6.3002267
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231152559419135751, guid: 2de1020a2000142b583667da443f4f80, type: 3}
+      propertyPath: _pickUpHeightCurve.m_Curve.Array.data[1].inWeight
+      value: 0.16556293
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231152559419135751, guid: 2de1020a2000142b583667da443f4f80, type: 3}
+      propertyPath: _pickUpHeightCurve.m_Curve.Array.data[1].outSlope
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231152559419135751, guid: 2de1020a2000142b583667da443f4f80, type: 3}
+      propertyPath: _pickUpHeightCurve.m_Curve.Array.data[2].inWeight
+      value: 0.20198679
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231152559419135751, guid: 2de1020a2000142b583667da443f4f80, type: 3}
+      propertyPath: _pickUpHeightCurve.m_Curve.Array.data[2].outSlope
+      value: -1.2730674
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231152559419135751, guid: 2de1020a2000142b583667da443f4f80, type: 3}
+      propertyPath: _pickUpHeightCurve.m_Curve.Array.data[0].outWeight
+      value: 0.069536425
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231152559419135751, guid: 2de1020a2000142b583667da443f4f80, type: 3}
+      propertyPath: _pickUpHeightCurve.m_Curve.Array.data[1].outWeight
+      value: 0.16887414
+      objectReference: {fileID: 0}
     - target: {fileID: 4576713956273703002, guid: 2de1020a2000142b583667da443f4f80, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -31.373053
