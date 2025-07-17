@@ -29,7 +29,7 @@ namespace PunchAndCarry.Scripts.Player
         public int StackCount => _characters.Count;
         public bool IsFull => _characters.Count == _charactersPivots.Count;
 
-        private void Update()
+        private void FixedUpdate()
         {
             var rotation = _targetRotation.eulerAngles;
 
@@ -48,20 +48,19 @@ namespace PunchAndCarry.Scripts.Player
             _targetRotation = Quaternion.Euler(rotation);
             RotatePivotsDelayed(rotation);
             
-            PositionAndRotationCharacter();
+            PositionAndRotationCharacters();
         }
 
         private async void RotatePivotsDelayed(Vector3 rotation)
         {
             for (var i = 0; i < _charactersPivots.Count; i++)
             {
-                var pivot = _charactersPivots[i];
-                pivot.localRotation = Quaternion.Euler(rotation);
+                _charactersPivots[i].localRotation = Quaternion.Euler(rotation);
                 await Awaitable.WaitForSecondsAsync(_pivotRotationDelay);
             }
         }
 
-        public void PushCharacter(Transform character)
+        private void PushCharacter(Transform character)
         {
             if (_characters.Contains(character)) return;
             if (_characters.Count == _charactersPivots.Count) return;
@@ -78,7 +77,7 @@ namespace PunchAndCarry.Scripts.Player
             return last;
         }
 
-        public void PositionAndRotationCharacter()
+        public void PositionAndRotationCharacters()
         {
             for (int i = 0; i < _characters.Count; i++)
             {
