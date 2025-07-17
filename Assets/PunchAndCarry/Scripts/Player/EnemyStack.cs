@@ -86,7 +86,7 @@ namespace PunchAndCarry.Scripts.Player
         public void Upgrade()
         {
             var pivot = _charactersPivots[^1];
-            var newPivot = Instantiate(pivot, _pivotsOffset, Quaternion.identity , pivot);
+            var newPivot = Instantiate(pivot , pivot);
             _charactersPivots.Add(newPivot);
         }
     }

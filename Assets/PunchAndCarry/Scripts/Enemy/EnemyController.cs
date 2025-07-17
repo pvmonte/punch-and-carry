@@ -37,19 +37,19 @@ namespace PunchAndCarry.Scripts.Enemy
         public async void Pickup(EnemyStack stack)
         {
             OnStartPickUpEvent?.Invoke();
+            Vector3 startPosition = transform.localPosition;
+            Transform endPosition = stack.CurrentPivot;
+            stack.PushCharacter(transform);
             _pickupCollider.gameObject.SetActive(false);
             
             float lerp = 0;
-            Vector3 startPosition = transform.localPosition;
             
             while (lerp < 1)
             {
                 lerp += Time.deltaTime;
-                transform.position = Vector3.Lerp(startPosition, stack.CurrentPivot.position, lerp);
+                transform.position = Vector3.Lerp(startPosition, endPosition.position, lerp);
                 await Awaitable.NextFrameAsync();
             }
-            
-            stack.PushCharacter(transform);
         }
     }
 }
