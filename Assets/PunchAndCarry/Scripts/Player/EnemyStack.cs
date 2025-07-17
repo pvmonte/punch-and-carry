@@ -11,7 +11,12 @@ namespace PunchAndCarry.Scripts.Player
         [SerializeField] private PlayerMovement _movement;
         [SerializeField] private List<Transform> _charactersPivots;
         [SerializeField] private Vector3 _pivotsOffset = new Vector3(0, 1, 0);
+        
+        [Header("Pick Up")]
+        [SerializeField] private AnimationCurve _pickUpHeightCurve;
+        [SerializeField] private float pickUpDuration = 0.5f;
 
+        [Header("Inertia")]
         [SerializeField] private float _rotationSpeed = 0.35f;
         [SerializeField] private float _pivotRotationDelay = 0.125f;
 
@@ -88,6 +93,27 @@ namespace PunchAndCarry.Scripts.Player
             var pivot = _charactersPivots[^1];
             var newPivot = Instantiate(pivot , pivot);
             _charactersPivots.Add(newPivot);
+        }
+        
+        public async void PickUp(Transform pickedUp)
+        {
+            Vector3 startPosition = pickedUp.localPosition;
+            Transform endPosition = CurrentPivot;
+            float heightStart = startPosition.y;
+            float heightEnd = endPosition.position.y;
+            PushCharacter(pickedUp);
+            
+            float lerp = 0;
+            
+            while (lerp < 1)
+            {
+                var positionLerped = Vector3.Lerp(startPosition, endPosition.position, lerp);
+                float evaluated = _pickUpHeightCurve.Evaluate(lerp);
+                positionLerped.y = Mathf.LerpUnclamped(heightStart, heightEnd, evaluated);
+                pickedUp.position = positionLerped;
+                lerp += Time.deltaTime / pickUpDuration;
+                await Awaitable.NextFrameAsync();
+            }
         }
     }
 }

@@ -18,7 +18,8 @@ namespace PunchAndCarry.Scripts.Enemy
         {
             if (player.EnemyStack.IsFull) return;
             
-            _controller.Pickup(player.EnemyStack);
+            _controller.Pickup();
+            player.EnemyStack.PickUp(_controller.transform);
         }
     }
 }

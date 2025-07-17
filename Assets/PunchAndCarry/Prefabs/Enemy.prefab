@@ -173,6 +173,40 @@ MonoBehaviour:
   _animator: {fileID: 6612287311946984007}
   _collider: {fileID: 2853510748510483378}
   _pickupCollider: {fileID: 2238562893521911223}
+  _pickUpHeightCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 9.906878
+      outSlope: 9.906878
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.059602648
+    - serializedVersion: 3
+      time: 0.5
+      value: 2
+      inSlope: 0.0000027001593
+      outSlope: 0.0000027001593
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.1655587
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -4.751818
+      outSlope: -4.751818
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07616079
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  pickUpDuration: 0.5
 --- !u!1 &1158866701052300698
 GameObject:
   m_ObjectHideFlags: 0
