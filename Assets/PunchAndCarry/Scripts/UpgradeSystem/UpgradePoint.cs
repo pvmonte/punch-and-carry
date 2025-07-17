@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 namespace PunchAndCarry.Scripts.UpgradeSystem
 {
-    public class UpgradePoint : MonoBehaviour , IInteractionCollidable
+    public class UpgradePoint : MonoBehaviour , IInteractionCollidable , IInteractionDispatcher
     {
+        public event Action OnInteraction;
+
         public void Collide(PlayerController player)
         {
             int upgradePrice = player.LevelController.UpgradePrice;
@@ -12,6 +15,7 @@ namespace PunchAndCarry.Scripts.UpgradeSystem
             if(!success) return;
             
             player.LevelController.Upgrade();
+            OnInteraction?.Invoke();
         }
     }
 }

@@ -1,14 +1,17 @@
+using System;
 using PunchAndCarry.Scripts.Player;
 using UnityEngine;
 
 namespace PunchAndCarry.Scripts.MoneySystem
 {
-    public class SellPoint : MonoBehaviour , IInteractionCollidable
+    public class SellPoint : MonoBehaviour , IInteractionCollidable , IInteractionDispatcher
     {
         [SerializeField] private LevelBag _bag;
         [SerializeField] private float throwInterval = 0.25f;
         [SerializeField] private float throwDuration = 0.5f;
         [SerializeField] private AnimationCurve throwHeightCurve;
+        
+        public event Action OnInteraction;
 
         public void Collide(PlayerController player)
         {
@@ -46,6 +49,7 @@ namespace PunchAndCarry.Scripts.MoneySystem
             
             throwed.gameObject.SetActive(false);
             _bag.Earn(100);
+            OnInteraction?.Invoke();
         }
     }
 }

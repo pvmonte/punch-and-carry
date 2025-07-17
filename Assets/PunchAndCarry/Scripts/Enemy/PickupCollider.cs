@@ -8,7 +8,7 @@ namespace PunchAndCarry.Scripts.Enemy
     {
         [SerializeField] private EnemyController _controller;
         [SerializeField] private Transform _hips;
-
+        
         private void Update()
         {
             transform.position = _hips.position;
@@ -21,5 +21,6 @@ namespace PunchAndCarry.Scripts.Enemy
             _controller.Pickup();
             player.EnemyStack.PickUp(_controller.transform);
         }
+
     }
 }

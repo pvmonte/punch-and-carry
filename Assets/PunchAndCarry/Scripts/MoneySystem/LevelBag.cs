@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace PunchAndCarry.Scripts.MoneySystem
 {
+    //TODO: rename to SceneBag
     public class LevelBag : MonoBehaviour
     {
         private int _money;

@@ -990,7 +990,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2ec9018fd4f484683bd9fd4f15762bc8, type: 2}
+  - {fileID: 2100000, guid: f9f9e6216771044efbef353b272d630e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1277,8 +1277,8 @@ MonoBehaviour:
   <Movement>k__BackingField: {fileID: 1574897283740969587}
   <Animation>k__BackingField: {fileID: 5351733427606687708}
   <EnemyStack>k__BackingField: {fileID: 4231152559419135751}
-  <Bag>k__BackingField: {fileID: 0}
-  <LevelController>k__BackingField: {fileID: 0}
+  <Bag>k__BackingField: {fileID: 3047764279555938640}
+  <LevelController>k__BackingField: {fileID: 2257374671511422269}
 --- !u!114 &1574897283740969587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1335,6 +1335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyStack: {fileID: 4231152559419135751}
+  _playerMaterial: {fileID: 2100000, guid: f9f9e6216771044efbef353b272d630e, type: 2}
   <UpgradePrice>k__BackingField: 200
   <UpgradeIncrement>k__BackingField: 200
 --- !u!114 &3047764279555938640
