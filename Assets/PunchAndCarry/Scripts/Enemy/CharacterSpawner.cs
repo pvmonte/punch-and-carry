@@ -18,7 +18,10 @@ namespace PunchAndCarry.Scripts.Enemy
                 CreateEnemy,
                 OnSpawnEnemy,
                 OnReleaseEnemy,
-                OnDestroyEnemy);
+                OnDestroyEnemy, 
+                true,
+                10,
+                30);
             
             SpawnLoop();
         }
