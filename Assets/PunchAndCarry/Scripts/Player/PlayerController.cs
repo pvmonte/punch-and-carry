@@ -10,9 +10,4 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public EnemyStack EnemyStack { get; private set; }
     [field: SerializeField] public LevelBag Bag { get; private set; }
     [field: SerializeField] public PlayerLevelController LevelController { get; private set; }
-    
-    void Start()
-    {
-        
-    }
 }

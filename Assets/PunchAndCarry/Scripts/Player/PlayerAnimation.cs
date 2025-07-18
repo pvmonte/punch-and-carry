@@ -26,5 +26,10 @@ namespace PunchAndCarry.Scripts.Player
         {
             _animator.SetFloat(Move, _playerMovement.MoveVector.magnitude);
         }
+
+        private void OnDestroy()
+        {
+            _punchCollider.OnPunchEvent -= PunchCollider_OnPunchEvent;
+        }
     }
 }

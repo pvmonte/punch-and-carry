@@ -75,5 +75,12 @@ namespace PunchAndCarry.Scripts.Enemy
                 await Awaitable.NextFrameAsync();
             }
         }
+
+        private void OnDestroy()
+        {
+            _enemyController.OnPunchedEvent -= OnPunched;
+            _enemyController.OnStartPickUpEvent -= DisableRagdoll;
+            _enemyController.OnStartPickUpEvent -= ReassembleToRoot;
+        }
     }
 }

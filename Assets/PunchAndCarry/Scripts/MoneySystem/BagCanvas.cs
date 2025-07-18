@@ -27,5 +27,11 @@ namespace PunchAndCarry.Scripts.MoneySystem
         {
             _moneyValue.text = value.ToString();
         }
+
+        private void OnDestroy()
+        {
+            _bag.OnChangeMoneyAmountEvent -= Bag_OnChangeMoneyAmountEvent;
+            _levelController.OnLevelUp -= LevelControllerOn_LevelUp;
+        }
     }
 }
