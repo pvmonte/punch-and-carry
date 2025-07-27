@@ -2,23 +2,23 @@ using System;
 using PunchAndCarry.Scripts.UpgradeSystem;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace PunchAndCarry.Scripts.MoneySystem
 {
-    public class BagCanvas : MonoBehaviour
+    public class HudCanvas : MonoBehaviour
     {
-        [SerializeField] private LevelBag _bag;
-        [SerializeField] private PlayerLevelController _levelController;
+        [SerializeField] private LevelUpController levelUpController;
         [SerializeField] private TMP_Text _moneyValue;
         [SerializeField] private TMP_Text _levelValue;
 
         private void Start()
         {
-            _bag.OnChangeMoneyAmountEvent += Bag_OnChangeMoneyAmountEvent;
-            _levelController.OnLevelUp += LevelControllerOn_LevelUp;
+            Bag.OnChangeMoneyAmountEvent += Bag_OnChangeMoneyAmountEvent;
+            levelUpController.OnLevelUp += LevelUpControllerOnLevelUpUp;
         }
 
-        private void LevelControllerOn_LevelUp(int level)
+        private void LevelUpControllerOnLevelUpUp(int level)
         {
             _levelValue.text = level.ToString();
         }
@@ -30,8 +30,8 @@ namespace PunchAndCarry.Scripts.MoneySystem
 
         private void OnDestroy()
         {
-            _bag.OnChangeMoneyAmountEvent -= Bag_OnChangeMoneyAmountEvent;
-            _levelController.OnLevelUp -= LevelControllerOn_LevelUp;
+            Bag.OnChangeMoneyAmountEvent -= Bag_OnChangeMoneyAmountEvent;
+            levelUpController.OnLevelUp -= LevelUpControllerOnLevelUpUp;
         }
     }
 }

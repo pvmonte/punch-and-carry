@@ -1,18 +1,17 @@
 using System;
-using PunchAndCarry.Scripts.Enemy;
 using UnityEngine;
 
-namespace PunchAndCarry.Scripts.Player
+namespace PunchAndCarry.Scripts.Player.Interaction
 {
-    public class CollectorCollider : MonoBehaviour
+    public class InteractionColliderController : MonoBehaviour
     {
-        [SerializeField] private PlayerController _controller;
+        public event Action<IInteractionCollidable> OnCollideEvent;
         
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out IInteractionCollidable collidable))
             {
-                collidable.Collide(_controller);
+                OnCollideEvent?.Invoke(collidable);
             }
         }
     }

@@ -1,4 +1,11 @@
-public interface IInteractionCollidable
+namespace PunchAndCarry.Scripts
 {
-    public void Collide(PlayerController player);
+    public interface IInteractionCollidable
+    {
+    }
+
+    public interface IInteractionCollidable<in T> : IInteractionCollidable
+    {
+        public void Collide(T interactor);
+    }
 }

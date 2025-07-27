@@ -4,18 +4,17 @@ using UnityEngine;
 
 namespace PunchAndCarry.Scripts.MoneySystem
 {
-    public class SellPoint : MonoBehaviour , IInteractionCollidable , IInteractionDispatcher
+    public class SellPoint : MonoBehaviour , IInteractionCollidable<EnemyStack> , IInteractionDispatcher
     {
-        [SerializeField] private LevelBag _bag;
         [SerializeField] private float throwInterval = 0.25f;
         [SerializeField] private float throwDuration = 0.5f;
         [SerializeField] private AnimationCurve throwHeightCurve;
         
         public event Action OnInteraction;
 
-        public void Collide(PlayerController player)
+        public void Collide(EnemyStack stack)
         {
-            ThrowAtPoint(player.EnemyStack);
+            ThrowAtPoint(stack);
         }
 
         private async void ThrowAtPoint(EnemyStack stack)
@@ -48,7 +47,8 @@ namespace PunchAndCarry.Scripts.MoneySystem
             }
             
             throwed.gameObject.SetActive(false);
-            _bag.Earn(100);
+            //TODO: Enemies with different values
+            Bag.Earn(100);
             OnInteraction?.Invoke();
         }
     }

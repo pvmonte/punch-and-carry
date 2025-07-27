@@ -77,6 +77,11 @@ namespace PunchAndCarry.Scripts.Player
             return last;
         }
 
+        public List<Transform> GetListOfCharacters()
+        {
+            return _characters;
+        }
+
         public void PositionAndRotationCharacters()
         {
             for (int i = 0; i < _characters.Count; i++)

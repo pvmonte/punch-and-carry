@@ -1,20 +1,21 @@
 using System;
+using PunchAndCarry.Scripts.MoneySystem;
 using UnityEngine;
 
 namespace PunchAndCarry.Scripts.UpgradeSystem
 {
-    public class UpgradePoint : MonoBehaviour , IInteractionCollidable , IInteractionDispatcher
+    public class UpgradePoint : MonoBehaviour , IInteractionCollidable<LevelUpController> , IInteractionDispatcher
     {
         public event Action OnInteraction;
 
-        public void Collide(PlayerController player)
+        public void Collide(LevelUpController levelUpController)
         {
-            int upgradePrice = player.LevelController.UpgradePrice;
-            bool success = player.Bag.TrySpend(upgradePrice);
+            int upgradePrice = levelUpController.UpgradePrice;
+            bool success = Bag.TrySpend(upgradePrice);
             
             if(!success) return;
             
-            player.LevelController.Upgrade();
+            levelUpController.Upgrade();
             OnInteraction?.Invoke();
         }
     }

@@ -151,8 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8fef1ad4472446cb36fd13388294fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bag: {fileID: 2798340683442238928}
-  _levelController: {fileID: 2798340683442238927}
+  levelUpController: {fileID: 2798340683442238927}
   _moneyValue: {fileID: 418645131}
   _levelValue: {fileID: 1853021760}
 --- !u!114 &88598777
@@ -2535,7 +2534,7 @@ PrefabInstance:
     - target: {fileID: 6212357345905870914, guid: f85e5bff79d7b476aa53781dc6596c03, type: 3}
       propertyPath: _bag
       value: 
-      objectReference: {fileID: 2798340683442238928}
+      objectReference: {fileID: 0}
     - target: {fileID: 6296844021382266642, guid: f85e5bff79d7b476aa53781dc6596c03, type: 3}
       propertyPath: m_Name
       value: SellPoint
@@ -2893,7 +2892,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3047764279555938640, guid: 2de1020a2000142b583667da443f4f80, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2907,17 +2907,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec513cf7544ba4f5bbd90c94b45f6a85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2798340683442238928 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3047764279555938640, guid: 2de1020a2000142b583667da443f4f80, type: 3}
-  m_PrefabInstance: {fileID: 2798340683442238926}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f8947a59649492f827ceb8aa9c108e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
